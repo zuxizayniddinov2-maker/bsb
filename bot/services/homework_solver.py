@@ -2,7 +2,10 @@ import re
 import logging
 from typing import Optional, Dict, Any
 import httpx
-import sympy as sp
+try:
+    import sympy as sp
+except ImportError:
+    sp = None
 
 from bot.config import GEMINI_API_KEY, GROQ_API_KEY
 
@@ -99,6 +102,8 @@ async def extract_text_from_image_ocr(image_bytes: bytes) -> str:
 
 def solve_math_with_sympy(text: str) -> Optional[str]:
     """Matematik tenglamalar va amallarni SymPy orqali qadamma-qadam yechish."""
+    if sp is None:
+        return None
     try:
         clean = text.strip()
         # Tenglama bo'lsa (masalan: 2x + 5 = 15)
