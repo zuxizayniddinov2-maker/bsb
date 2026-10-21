@@ -39,6 +39,8 @@ SUBJECTS_BY_GRADE = {
         ("Tabiiy fanlar (Science)", "science", "🔬"),
         ("Ingliz tili", "ingliz-tili", "🇬🇧"),
         ("Rus tili", "rus-tili", "🇷🇺"),
+        ("Nemis tili", "nemis-tili", "🇩🇪"),
+        ("Fransuz tili", "fransuz-tili", "🇫🇷"),
         ("Informatika va AT", "informatika", "💻"),
         ("Texnologiya", "texnologiya", "🛠"),
         ("Tasviriy san'at", "tasviriy-sanat", "🎨"),
@@ -54,6 +56,8 @@ SUBJECTS_BY_GRADE = {
         ("Tabiiy fanlar (Science)", "science", "🔬"),
         ("Ingliz tili", "ingliz-tili", "🇬🇧"),
         ("Rus tili", "rus-tili", "🇷🇺"),
+        ("Nemis tili", "nemis-tili", "🇩🇪"),
+        ("Fransuz tili", "fransuz-tili", "🇫🇷"),
         ("Informatika va AT", "informatika", "💻"),
         ("Texnologiya", "texnologiya", "🛠"),
         ("Tasviriy san'at", "tasviriy-sanat", "🎨"),
@@ -74,6 +78,8 @@ SUBJECTS_BY_GRADE = {
         ("Geografiya", "geografiya", "🗺"),
         ("Ingliz tili", "ingliz-tili", "🇬🇧"),
         ("Rus tili", "rus-tili", "🇷🇺"),
+        ("Nemis tili", "nemis-tili", "🇩🇪"),
+        ("Fransuz tili", "fransuz-tili", "🇫🇷"),
         ("Informatika va AT", "informatika", "💻"),
         ("Texnologiya", "texnologiya", "🛠"),
         ("Tasviriy san'at", "tasviriy-sanat", "🎨"),
@@ -86,15 +92,17 @@ SUBJECTS_BY_GRADE = {
         ("Adabiyot", "adabiyot", "📚"),
         ("Algebra", "algebra", "🔢"),
         ("Geometriya", "geometriya", "📐"),
-        ("O‘zbekiston tarixi", "ozbekiston-tarixi", "🇺🇿"),
-        ("Jahon tarixi", "jahon-tarixi", "🌍"),
         ("Fizika", "fizika", "⚡"),
         ("Kimyo", "kimyo", "🧪"),
         ("Biologiya (Odam va salomatlik)", "biologiya", "🧬"),
-        ("Geografiya", "geografiya", "🗺"),
+        ("O‘zbekiston tarixi", "ozbekiston-tarixi", "🇺🇿"),
+        ("Jahon tarixi", "jahon-tarixi", "🌍"),
         ("Davlat va huquq asoslari", "huquq", "⚖️"),
+        ("Geografiya", "geografiya", "🗺"),
         ("Ingliz tili", "ingliz-tili", "🇬🇧"),
         ("Rus tili", "rus-tili", "🇷🇺"),
+        ("Nemis tili", "nemis-tili", "🇩🇪"),
+        ("Fransuz tili", "fransuz-tili", "🇫🇷"),
         ("Informatika va AT", "informatika", "💻"),
         ("Texnologiya", "texnologiya", "🛠"),
         ("Chizmachilik", "chizmachilik", "📏"),
@@ -106,19 +114,23 @@ SUBJECTS_BY_GRADE = {
         ("Adabiyot", "adabiyot", "📚"),
         ("Algebra", "algebra", "🔢"),
         ("Geometriya", "geometriya", "📐"),
-        ("O‘zbekiston tarixi", "ozbekiston-tarixi", "🇺🇿"),
-        ("Jahon tarixi", "jahon-tarixi", "🌍"),
         ("Fizika", "fizika", "⚡"),
         ("Kimyo", "kimyo", "🧪"),
         ("Biologiya (Umumiy biologiya)", "biologiya", "🧬"),
-        ("Geografiya", "geografiya", "🗺"),
+        ("O‘zbekiston tarixi", "ozbekiston-tarixi", "🇺🇿"),
+        ("Jahon tarixi", "jahon-tarixi", "🌍"),
         ("Davlat va huquq asoslari", "huquq", "⚖️"),
+        ("Konstitutsiyaviy huquq asoslari", "konstitutsiya-huquq", "📜"),
         ("Iqtisodiy bilim asoslari", "iqtisodiyot", "💰"),
+        ("Geografiya", "geografiya", "🗺"),
         ("Ingliz tili", "ingliz-tili", "🇬🇧"),
         ("Rus tili", "rus-tili", "🇷🇺"),
+        ("Nemis tili", "nemis-tili", "🇩🇪"),
+        ("Fransuz tili", "fransuz-tili", "🇫🇷"),
         ("Informatika va AT", "informatika", "💻"),
         ("Texnologiya", "texnologiya", "🛠"),
         ("Chizmachilik", "chizmachilik", "📏"),
+        ("Kasbiy ta'lim", "kasbiy-talim", "💼"),
         ("Tarbiya", "tarbiya", "🧭"),
         ("Jismoniy tarbiya", "jismoniy-tarbiya", "⚽"),
     ],
@@ -127,17 +139,23 @@ SUBJECTS_BY_GRADE = {
         ("Adabiyot", "adabiyot", "📚"),
         ("Algebra va analiz asoslari", "algebra", "🔢"),
         ("Geometriya", "geometriya", "📐"),
-        ("O‘zbekiston tarixi", "ozbekiston-tarixi", "🇺🇿"),
-        ("Jahon tarixi", "jahon-tarixi", "🌍"),
         ("Fizika", "fizika", "⚡"),
+        ("Astronomiya", "astronomiya", "🔭"),
         ("Kimyo", "kimyo", "🧪"),
         ("Biologiya", "biologiya", "🧬"),
-        ("Geografiya", "geografiya", "🗺"),
+        ("O‘zbekiston tarixi", "ozbekiston-tarixi", "🇺🇿"),
+        ("Jahon tarixi", "jahon-tarixi", "🌍"),
         ("Davlat va huquq asoslari", "huquq", "⚖️"),
+        ("Geografiya", "geografiya", "🗺"),
+        ("Tadbirkorlik asoslari", "tadbirkorlik", "💼"),
+        ("Iqtisodiyot", "iqtisodiyot", "💰"),
         ("Ingliz tili", "ingliz-tili", "🇬🇧"),
         ("Rus tili", "rus-tili", "🇷🇺"),
+        ("Nemis tili", "nemis-tili", "🇩🇪"),
+        ("Fransuz tili", "fransuz-tili", "🇫🇷"),
         ("Informatika va AT", "informatika", "💻"),
         ("CHQBT", "chqbt", "🎖"),
+        ("Texnologiya (Kasbiy ta'lim)", "texnologiya", "🛠"),
         ("Tarbiya", "tarbiya", "🧭"),
         ("Jismoniy tarbiya", "jismoniy-tarbiya", "⚽"),
     ],
@@ -146,18 +164,23 @@ SUBJECTS_BY_GRADE = {
         ("Adabiyot", "adabiyot", "📚"),
         ("Algebra va analiz asoslari", "algebra", "🔢"),
         ("Geometriya", "geometriya", "📐"),
-        ("O‘zbekiston tarixi", "ozbekiston-tarixi", "🇺🇿"),
-        ("Jahon tarixi", "jahon-tarixi", "🌍"),
         ("Fizika", "fizika", "⚡"),
+        ("Astronomiya", "astronomiya", "🔭"),
         ("Kimyo", "kimyo", "🧪"),
         ("Biologiya", "biologiya", "🧬"),
-        ("Geografiya", "geografiya", "🗺"),
+        ("O‘zbekiston tarixi", "ozbekiston-tarixi", "🇺🇿"),
+        ("Jahon tarixi", "jahon-tarixi", "🌍"),
         ("Davlat va huquq asoslari", "huquq", "⚖️"),
+        ("Geografiya", "geografiya", "🗺"),
         ("Tadbirkorlik asoslari", "tadbirkorlik", "💼"),
+        ("Iqtisodiyot", "iqtisodiyot", "💰"),
         ("Ingliz tili", "ingliz-tili", "🇬🇧"),
         ("Rus tili", "rus-tili", "🇷🇺"),
+        ("Nemis tili", "nemis-tili", "🇩🇪"),
+        ("Fransuz tili", "fransuz-tili", "🇫🇷"),
         ("Informatika va AT", "informatika", "💻"),
         ("CHQBT", "chqbt", "🎖"),
+        ("Texnologiya (Kasbiy ta'lim)", "texnologiya", "🛠"),
         ("Tarbiya", "tarbiya", "🧭"),
         ("Jismoniy tarbiya", "jismoniy-tarbiya", "⚽"),
     ],
@@ -386,6 +409,40 @@ SAMPLE_ASSIGNMENTS = [
         ),
         "source_url": "https://ziyonet.uz/11-english-bsb-1",
         "source_name": "English 11 B2 Student Book Assessment",
+    },
+    # 11-sinf Astronomiya 1-chorak 1-BSB
+    {
+        "grade_id": 11,
+        "term_id": 1,
+        "subject_code": "astronomiya",
+        "type_code": "BSB",
+        "assignment_num": 1,
+        "title": "1-BSB: Amaliy astronomiya asoslari va osmon sferasi",
+        "questions_text": (
+            "1. Osmon sferasining asosiy nuqtalari va chiziqlari (Zenit, Nodir, haqiqiy ufq, osmon meridiani)ni tushuntiring.\n"
+            "2. Yulduz turkumlari nima va osmon sferasi nechta yulduz turkumiga bo'lingan?\n"
+            "3. Masala: Yulduzning yuqori kulminatsiyasidagi balandligi h = 55° bo'lsa, kuzatish joyining geografik kengligini toping (og'ishi δ = +20°).\n"
+            "4. Teleskoplarning turlari (refraktor va reflektor) va ularning ishlash prinsipi qanday farqlanadi?"
+        ),
+        "answers_text": (
+            "✅ 1-savol javobi:\n"
+            "- Zenit (Z) — kuzatuvchi boshining ustidagi osmon sferasining eng yuqori vertikal nuqtasi;\n"
+            "- Nodir (Z') — Zenitga qarama-qarshi bo'lgan eng quyi nuqta;\n"
+            "- Haqiqiy ufq — vertikal chiziqqa perpendikulyar bo'lgan katta doira tekisligi;\n"
+            "- Osmon meridiani — Zenit, Nodir va dunyo qutblari orqali o'tuvchi katta doira.\n\n"
+            "✅ 2-savol javobi:\n"
+            "Yulduz turkumi — osmon sferasidagi chegaralari qat'iy belgilangan yulduzlar guruhi maydoni. Xalqaro Astronomiya Ittifoqi (XAI) qaroriga ko'ra osmon sferasi jami 88 ta yulduz turkumiga bo'lingan.\n\n"
+            "✅ 3-savol javobi:\n"
+            "Berilgan: h = 55°, δ = +20°.\n"
+            "Formula: Janubda kulminatsiya uchun h = 90° - φ + δ.\n"
+            "Kenglikni topamiz: φ = 90° - h + δ = 90° - 55° + 20° = 55° shimoliy kenglik.\n"
+            "Javob: Kuzatish nuqtasi 55° shimoliy kenglikda joylashgan.\n\n"
+            "✅ 4-savol javobi:\n"
+            "- Refraktor teleskop — yorug'likni to'plash va tasvir hosil qilish uchun linzalar tizimidan (ob'yektiv) foydalanadi;\n"
+            "- Reflektor teleskop — yorug'likni fokuslash uchun botiq ko'zgudan (Nyuton sxemasi) foydalanadi. Reflektorlar xromatik aberratsiyadan xoli bo'lib, katta diametrli observatoriyalarda keng qo'llaniladi."
+        ),
+        "source_url": "https://talim.uz/11-astronomiya-bsb-1",
+        "source_name": "11-sinf Astronomiya darsligi",
     }
 ]
 

@@ -104,7 +104,7 @@ def get_subjects_keyboard(
     term_id: int,
     subjects: List[Dict[str, Any]],
     page: int = 0,
-    per_page: int = 6
+    per_page: int = 10
 ) -> InlineKeyboardMarkup:
     """3. Fanlarni tanlash klaviaturasi (sahifalangan holda)."""
     total_subjects = len(subjects)
@@ -139,12 +139,12 @@ def get_subjects_keyboard(
                 callback_data=SubjectPageCallback(grade_id=grade_id, term_id=term_id, page=page - 1).pack()
             ))
         page_nav.append(InlineKeyboardButton(
-            text=f"📄 {page + 1}/{total_pages}",
+            text=f"📄 {page + 1}/{total_pages}-sahifa",
             callback_data="noop"
         ))
         if page < total_pages - 1:
             page_nav.append(InlineKeyboardButton(
-                text="Keyingi ➡️",
+                text="Keyingi fanlar ➡️",
                 callback_data=SubjectPageCallback(grade_id=grade_id, term_id=term_id, page=page + 1).pack()
             ))
         buttons.append(page_nav)

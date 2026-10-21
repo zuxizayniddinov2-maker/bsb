@@ -32,21 +32,30 @@ def get_main_mode_keyboard() -> InlineKeyboardMarkup:
     ]
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
-# Maktabdagi barcha asosiy fanlar
+# Maktabdagi barcha asosiy fanlar (5-11-sinf)
 ALL_HOMEWORK_SUBJECTS = [
     ("Matematika / Algebra", "matematika", "📐"),
     ("Geometriya", "geometriya", "📐"),
     ("Ona tili", "ona-tili", "📖"),
     ("Adabiyot", "adabiyot", "📚"),
     ("Fizika", "fizika", "⚡"),
+    ("Astronomiya", "astronomiya", "🔭"),
     ("Kimyo", "kimyo", "🧪"),
     ("Biologiya", "biologiya", "🧬"),
-    ("Tarix", "tarix", "🏛"),
+    ("O'zbekiston / Jahon tarixi", "tarix", "🏛"),
+    ("Geografiya", "geografiya", "🗺"),
+    ("Davlat va huquq", "huquq", "⚖️"),
+    ("Iqtisodiyot / Tadbirkorlik", "iqtisodiyot", "💰"),
     ("Ingliz tili", "ingliz-tili", "🇬🇧"),
     ("Rus tili", "rus-tili", "🇷🇺"),
+    ("Nemis tili", "nemis-tili", "🇩🇪"),
+    ("Fransuz tili", "fransuz-tili", "🇫🇷"),
     ("Informatika va AT", "informatika", "💻"),
-    ("Geografiya", "geografiya", "🗺"),
-    ("Boshqa fanlar", "boshqa", "🧭")
+    ("Chizmachilik", "chizmachilik", "📏"),
+    ("Texnologiya / Mehnat", "texnologiya", "🛠"),
+    ("CHQBT", "chqbt", "🎖"),
+    ("Tarbiya", "tarbiya", "🧭"),
+    ("Boshqa fanlar", "boshqa", "📚"),
 ]
 
 def get_homework_subjects_keyboard() -> InlineKeyboardMarkup:

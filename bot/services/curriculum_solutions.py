@@ -366,6 +366,96 @@ def build_authentic_school_solution(
             f"4. Javob: Tarixiy hujjatlar va tushunchalar o'quv dasturi talabiga to'la mos ravishda ochib berildi."
         )
 
+    # ASTRONOMIYA
+    elif any(k in sub_lower for k in ["astronomiya", "koinot"]):
+        questions = (
+            f"1. Osmon sferasi, yoritqichlarning sutkalik harakati va asosiy astronomik koordinatalar sistemasini tushuntiring.\n"
+            f"2. Quyosh sistemasi tuzilishi, sayyoralar guruhlari va ularning fizik xossalarini taqqoslang.\n"
+            f"3. Masala: Yulduzning kulminatsiya balandligi yoki Kepler qonunlari asosidagi masofani hisoblang.\n"
+            f"4. Zamonaviy astrofizik kuzatuv usullari, optik va radioteleskoplar imkoniyatlarini yoritib bering."
+        )
+        answers = (
+            f"1. Javob: Osmon sferasining asosiy nuqtalari (Zenit, Nodir, ufq tekisligi) va gorizontal hamda ekvatorial koordinatalar darslik qoidalariga binoan to'liq tushuntirildi.\n\n"
+            f"2. Javob: Yer guruhi (Merkuriy, Venera, Yer, Mars) va gigant sayyoralar (Yupiter, Saturn, Uran, Neptun) massasi, zichligi va atmosferasi taqqoslab berildi.\n\n"
+            f"3. Javob: Berilgan kattaliklar formulaga qo'yildi: h = 90° - φ + δ. Tegishli astronomik hisob-kitoblar aniq qadamlar bilan bajarilib, to'g'ri natija olindi.\n\n"
+            f"4. Javob: Teleskoplarning burchak ajratish qobiliyati va fazoviy observatoriyalarning (Hubble, James Webb) koinotni tadqiq etishdagi ahamiyati ilmiy tahlil qilindi."
+        )
+
+    # DAVLAT VA HUQUQ ASOSLARI / KONSTITUTSIYA
+    elif any(k in sub_lower for k in ["huquq", "konstitutsiya"]):
+        questions = (
+            f"1. O'zbekiston Respublikasi Konstitutsiyasining asosiy tamoyillari va inson huquqlari kafolatlarini tushuntiring.\n"
+            f"2. Huquqiy munosabatlar ishtirokchilari, ularning huquq layoqati va muomala layoqatini izohlang.\n"
+            f"3. Huquq sohalari (fuqarolik, mehnat, oila, ma'muriy, jinoyat huquqi) bo'yicha amaliy vaziyatni (keys) tahlil qiling.\n"
+            f"4. Huquqbuzarlik turlari va yuridik javobgarlik choralari to'g'risida tushuncha bering."
+        )
+        answers = (
+            f"1. Javob: Yangi tahrirdagi Konstitutsiyaning \"inson — jamiyat — davlat\" tamoyili, shaxsiy, siyosiy, iqtisodiy-ijtimoiy huquqlar moddalar bilan to'liq ochib berildi.\n\n"
+            f"2. Javob: Fuqaroning huquq layoqati tug'ilgan paytidan vujudga kelishi, to'liq muomala layoqati esa 18 yoshga to'lgach boshlanishi qonunchilik asosida asoslandi.\n\n"
+            f"3. Javob: Berilgan huquqiy vaziyat moddalar bo'yicha tahlil qilinib, qonuniy yechim va fuqarolarning burchlari ko'rsatildi.\n\n"
+            f"4. Javob: Nojo'ya harakat va jinoyatning farqlari hamda ularga nisbatan qo'llanuvchi intizomiy, ma'muriy, moddiy va jinoiy javobgarlik choralari bayon etildi."
+        )
+
+    # IQTISODIYOT / TADBIRKORLIK ASOSLARI
+    elif any(k in sub_lower for k in ["iqtisodiyot", "tadbirkorlik"]):
+        questions = (
+            f"1. Bozor iqtisodiyotining asosiy qonunlari: talab, taklif va muvozanatli narx shakllanishini tushuntiring.\n"
+            f"2. Tadbirkorlik faoliyatini tashkil etish bosqichlari va biznes-rejaning asosiy bo'limlarini ko'rsating.\n"
+            f"3. Amaliy hisoblash: korxona yoki oilaviy daromad, xarajat, sof foyda va rentabellikni hisoblang.\n"
+            f"4. Bank tizimi, inflyatsiya va investitsiyalarning iqtisodiyotdagi o'rnini yoritib bering."
+        )
+        answers = (
+            f"1. Javob: Talab qonuni (narx ko'tarilsa talab kamayishi) va taklif qonuni grafiklar hamda misollar orqali tushuntirildi, bozor muvozanati aniqlandi.\n\n"
+            f"2. Javob: Davlat ro'yxatidan o'tish, mahsulot ishlab chiqarish yoki xizmat ko'rsatish, marketing va moliyaviy reja qismlari tartib bilan keltirildi.\n\n"
+            f"3. Javob: Formulalar: Umumiy daromad = Narx × Miqdor; Sof foyda = Daromad - Xarajatlar - Soliqlar. Hisob-kitoblar bosqichma-bosqich bajarildi.\n\n"
+            f"4. Javob: Pul qadrsizlanishi (inflatsiya) sabablari, kredit va omonat mexanizmlari hamda investitsiyalarning yangi ish o'rinlari yaratishdagi o'rni tahlil qilindi."
+        )
+
+    # CHIZMACHILIK
+    elif any(k in sub_lower for k in ["chizmachilik"]):
+        questions = (
+            f"1. Chizma shriftlari, masshtablar va chiziq turlari (asosiy tutash, ingichka, shtrixli, shtrix-punktirli) qoidalarini ayting.\n"
+            f"2. Detalning 3 ta asosiy proyeksiyasini (bosh ko'rinish, ustki ko'rinish, chap ko'rinish) yasash ketma-ketligini tushuntiring.\n"
+            f"3. Kesim va qirqimlarning farqi hamda ularni chizmada shtrixlash qoidalarini bayon eting.\n"
+            f"4. Aksonometrik proyeksiyalar (izometriya va dimetriya) yasash qoidalarini ko'rsating."
+        )
+        answers = (
+            f"1. Javob: Davlat standarti bo'yicha asosiy tutash chiziq (s) ko'rinadigan qirralar uchun, shtrixli chiziq ko'rinmas qirralar uchun, shtrix-punktir o'q chiziqlari uchun ishlatilishi chizib tushuntirildi.\n\n"
+            f"2. Javob: Proyeksiyalash burchaklarida bog'lanish chiziqlari tortilib, detalning frontal (V), gorizontal (H) va profil (W) tekisliklardagi aniq ko'rinishlari yasab chiqildi.\n\n"
+            f"3. Javob: Kesimda faqat kesuvchi tekislik teggan joy ko'rsatiladi, qirqimda esa kesim ortidagi barcha qirralar ham ko'rsatiladi. Shtrixlar 45° burchak ostida ingichka chiziq bilan chizildi.\n\n"
+            f"4. Javob: Izometriyada o'qlar oralig'i 120°, o'lchamlar 1:1 olinishi, dimetriyalarda y o'qi 45° da 2 barobar qisqartirib olinishi qadamma-qadam ifodalandi."
+        )
+
+    # CHQBT (CHAQIRUVGA QADAR BOSHLANG'ICH TAYYORGARLIK)
+    elif any(k in sub_lower for k in ["chqbt"]):
+        questions = (
+            f"1. O'zbekiston Respublikasi Qurolli Kuchlari tuzilishi va harbiy qasamyodning muqaddas burchi haqida yozing.\n"
+            f"2. Saf tayyorgarligi: saf turlari, safda turish va buyruqlarni bajarish tartibini tushuntiring.\n"
+            f"3. O'q otish qurollari (AKM / AK-74) ning taktik-texnik xususiyatlari va to'liq bo'lmagan qismlarga ajratish tartibi.\n"
+            f"4. Fuqaro muhofazasi: favqulodda vaziyatlarda (zilzila, yong'in) xavfsizlik va birinchi tibbiy yordam ko'rsatish qoidalari."
+        )
+        answers = (
+            f"1. Javob: Vatan himoyasi har bir fuqaroning konstitutsiyaviy burchi ekani, harbiy unvonlar va Qurolli Kuchlar qo'shin turlari darslik mezonida to'liq yoritildi.\n\n"
+            f"2. Javob: Yoyiq saf, yurish safi, saf elementi (qator, flang, oraliq, masofa) va 'Safda tur!', 'Tekislan!', 'To'g'rilan!' buyruqlari tartibi ko'rsatildi.\n\n"
+            f"3. Javob: Kalashnikov avtomatining nishonga olish masofasi (1000 m), o'qining tezligi (900 m/s), o'qlari sig'imi (30 ta) va qurolni ketma-ket qismlarga ajratish va yig'ish qoidalari bayon etildi.\n\n"
+            f"4. Javob: Gazniqob va shaxsiy himoya vositalarini kiyish normativlari hamda qon ketishida jgut (bog'ich) qo'yish, singanda shina bog'lash qoidalari aniq tushuntirildi."
+        )
+
+    # CHET TILLARI (NEMIS TILI, FRANSUZ TILI, RUS TILI)
+    elif any(k in sub_lower for k in ["nemis", "deutsch", "fransuz", "rus"]):
+        questions = (
+            f"1. Grammatika: Gaplardagi fe'l zamonlari va kelishik qo'shimchalarini to'g'ri qo'llang.\n"
+            f"2. Lug'at boyligi: Mavzuga oid yangi so'zlarni tarjima qiling va gaplar tuzing.\n"
+            f"3. Matnni o'qib tushunish: Matn mazmuni bo'yicha berilgan savollarga to'liq javob yozing.\n"
+            f"4. Yozma nutq: Berilgan mavzuda 4-5 ta savodli gap yozing."
+        )
+        answers = (
+            f"1. Javob: Grammatik qoidalar, fe'llarning tuslanishi va gap qurilishi tartibiga qat'iy rioya qilingan holda mashq to'liq bajarildi.\n\n"
+            f"2. Javob: Barcha so'zlar to'g'ri ma'noda ishlatilib, grammatik moslashuv bilan namunaviy gaplar tuzildi.\n\n"
+            f"3. Javob: Matn savollariga aniq, lo'nda va to'liq javoblar qaytarildi.\n\n"
+            f"4. Javob: Mavzu bo'yicha bog'lovchi vositalardan foydalanib, mazmunli yozma xulosa tuzildi."
+        )
+
     # CHET TILI (INGLIZ TILI)
     elif any(k in sub_lower for k in ["ingliz", "english"]):
         questions = (
