@@ -1,6 +1,8 @@
 import sys
+import os
 import asyncio
 import logging
+from aiohttp import web
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 from aiogram.client.default import DefaultBotProperties
@@ -22,6 +24,34 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger("BSB_CHSB_BOT")
+
+async def handle_ping(request):
+    """Render.com uchun salomatlik tekshiruvi (Health Check)."""
+    return web.json_response({
+        "status": "ok",
+        "service": "BSB & CHSB Telegram Bot",
+        "message": "Bot is active and running smoothly"
+    })
+
+async def start_render_health_server():
+    """Render Web Service portini tinglash (Render bepul tarifida bot o'chib qolmasligi uchun)."""
+    port_str = os.getenv("PORT")
+    if not port_str:
+        return None
+    try:
+        port = int(port_str)
+        app = web.Application()
+        app.router.add_get("/", handle_ping)
+        app.router.add_get("/health", handle_ping)
+        runner = web.AppRunner(app)
+        await runner.setup()
+        site = web.TCPSite(runner, "0.0.0.0", port)
+        await site.start()
+        logger.info(f"Render Web Service HTTP serveri {port}-portda muvaffaqiyatli ishga tushdi.")
+        return runner
+    except Exception as e:
+        logger.warning(f"Render HTTP serverini ishga tushirishda xatolik: {e}")
+        return None
 
 async def setup_bot_commands(bot: Bot):
     """Telegram menyusi uchun standart buyruqlarni o'rnatish."""
@@ -71,10 +101,13 @@ async def main():
     logger.info(f"Bot muvaffaqiyatli ishga tushdi: @{bot_info.username} (ID: {bot_info.id})")
     print(f"\n>>> Bot ishlamoqda! Telegramdan @{bot_info.username} ga /start yuboring.\n")
 
-    # 5. Pollingni boshlash
+    # 5. Render HTTP serveri va Pollingni boshlash
+    health_runner = await start_render_health_server()
     try:
         await dp.start_polling(bot)
     finally:
+        if health_runner:
+            await health_runner.cleanup()
         await bot.session.close()
 
 if __name__ == "__main__":

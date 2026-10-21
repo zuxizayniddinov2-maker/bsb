@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: bsb-chsb-telegram-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: DATABASE_PATH
+        value: data/bot.db
+      - key: ENABLE_ONLINE_SEARCH
+        value: "true"
+      - key: SEARCH_MAX_RESULTS
+        value: "5"
+      - key: SEARCH_CACHE_DAYS
+        value: "14"
