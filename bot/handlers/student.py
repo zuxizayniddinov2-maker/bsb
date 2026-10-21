@@ -33,6 +33,7 @@ from bot.keyboards.inline import (
 from bot.services.search_service import search_online_materials
 from bot.utils.helpers import format_assignment_text, format_not_found_text
 from bot.handlers.start import START_TEXT
+from bot.keyboards.homework_kb import get_main_mode_keyboard
 
 logger = logging.getLogger(__name__)
 student_router = Router(name="student_router")
@@ -265,8 +266,7 @@ async def process_action(query: types.CallbackQuery, callback_data: ActionCallba
     action = callback_data.action
 
     if action == "main_menu":
-        grades = await get_all_grades()
-        kb = get_grades_keyboard(grades)
+        kb = get_main_mode_keyboard()
         try:
             await query.message.edit_text(START_TEXT, reply_markup=kb, parse_mode="HTML")
         except TelegramBadRequest:

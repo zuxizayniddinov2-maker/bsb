@@ -58,6 +58,13 @@ def get_grades_keyboard(grades: List[Dict[str, Any]]) -> InlineKeyboardMarkup:
     if row:
         buttons.append(row)
 
+    buttons.append([
+        InlineKeyboardButton(
+            text="🏠 Bosh menyu",
+            callback_data=ActionCallback(action="main_menu").pack()
+        )
+    ])
+
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
 

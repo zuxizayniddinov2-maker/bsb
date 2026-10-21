@@ -26,3 +26,7 @@ DATABASE_PATH.parent.mkdir(parents=True, exist_ok=True)
 ENABLE_ONLINE_SEARCH = os.getenv("ENABLE_ONLINE_SEARCH", "true").lower() in ("true", "1", "yes")
 SEARCH_MAX_RESULTS = int(os.getenv("SEARCH_MAX_RESULTS", "5"))
 SEARCH_CACHE_DAYS = int(os.getenv("SEARCH_CACHE_DAYS", "14"))
+
+# AI kalitlari (Uy vazifasini yechish uchun)
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "").strip()

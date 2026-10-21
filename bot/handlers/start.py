@@ -1,30 +1,32 @@
 import logging
 from aiogram import Router, types
 from aiogram.filters import CommandStart, Command
-from bot.database.models import register_or_update_user, get_all_grades
-from bot.keyboards.inline import get_grades_keyboard
+from bot.database.models import register_or_update_user
+from bot.keyboards.homework_kb import get_main_mode_keyboard
 
 logger = logging.getLogger(__name__)
 start_router = Router(name="start_router")
 
 START_TEXT = (
     "Assalomu alaykum! 🎓\n\n"
-    "<b>O‘zbekiston maktab o‘quvchilari uchun BSB va CHSB javoblari botiga xush kelibsiz!</b>\n\n"
-    "Bu yerda siz 5-sinfdan 11-sinfgacha bo‘lgan barcha fanlardan Bob bo‘yicha summativ baholash (BSB) "
-    "va Choraklik summativ baholash (CHSB) topshiriqlari hamda ularning javoblarini topishingiz mumkin.\n\n"
-    "👇 <b>Sinfingizni tanlang:</b>"
+    "<b>O‘zbekiston maktab o‘quvchilari uchun BSB/CHSB va Uyga vazifa yechuvchi botga xush kelibsiz!</b>\n\n"
+    "Quyidagi xizmatlardan birini tanlang:\n\n"
+    "📊 <b>BSB va CHSB javoblari</b> — 5-sinfdan 11-sinfgacha barcha rasmiy fanlar bo‘yicha summativ baholash yechimlari.\n\n"
+    "✍️ <b>Uyga vazifani yechish (AI Ustoz)</b> — kitob yoki daftardagi topshiriq rasmini yoxud matnini yuboring, "
+    "bot barcha fanlardan misollarni daftarga ko‘chirib yozishga mos qilib to‘liq yechib beradi!"
 )
 
 HELP_TEXT = (
     "📖 <b>Botdan foydalanish bo‘yicha qo‘llanma:</b>\n\n"
-    "1. /start buyrug‘ini bosing.\n"
-    "2. O‘zingiz o‘qiydigan sinfni (5–11) tanlang.\n"
-    "3. O‘quv choragini (1–4) belgilang.\n"
-    "4. Fanlar ro‘yxatidan kerakli fanni tanlang.\n"
-    "5. Baholash turini (BSB yoki CHSB) va topshiriq raqamini bosing.\n"
-    "6. Bot bazadan va internetdan ishonchli yechimlarni topib beradi.\n\n"
-    "ℹ️ <i>Bot faqat haqiqiy o‘quv dasturiga mos materiallarni ko‘rsatadi. "
-    "Agar javob hali tasdiqlanmagan bo‘lsa, u haqida ochiq ma'lumot beriladi.</i>"
+    "1. <b>BSB va CHSB bo‘limi:</b>\n"
+    "   - Sinfingizni (5–11) va chorakni tanlang;\n"
+    "   - Fanni hamda BSB yoki CHSB turini tanlang;\n"
+    "   - Bot barcha savollar va ularning to'liq raqamlangan yechimlarini chiqaradi.\n\n"
+    "2. <b>Uyga vazifani yechish bo‘limi:</b>\n"
+    "   - Kerakli fanni (Matematika, Fizika, Ona tili, Ingliz tili va hk.) tanlang;\n"
+    "   - Kitobdagi misol rasmini (fotosini) yuboring yoki topshiriqni chatga yozing;\n"
+    "   - Bot daftarga yozishga mos qilib qadamma-qadam to'liq yechib beradi!\n\n"
+    "ℹ️ <i>Bot barcha maktab fanlarini qo'llab-quvvatlaydi.</i>"
 )
 
 @start_router.message(CommandStart())
@@ -37,8 +39,7 @@ async def cmd_start(message: types.Message):
         last_name=user.last_name
     )
 
-    grades = await get_all_grades()
-    kb = get_grades_keyboard(grades)
+    kb = get_main_mode_keyboard()
     await message.answer(START_TEXT, reply_markup=kb, parse_mode="HTML")
 
 @start_router.message(Command("help"))
@@ -47,6 +48,5 @@ async def cmd_help(message: types.Message):
 
 @start_router.message(Command("menu"))
 async def cmd_menu(message: types.Message):
-    grades = await get_all_grades()
-    kb = get_grades_keyboard(grades)
-    await message.answer("Assalomu alaykum! Sinfingizni tanlang:", reply_markup=kb)
+    kb = get_main_mode_keyboard()
+    await message.answer(START_TEXT, reply_markup=kb, parse_mode="HTML")

@@ -15,6 +15,7 @@ from bot.database.seed_data import seed_database
 from bot.handlers.start import start_router
 from bot.handlers.student import student_router
 from bot.handlers.admin import admin_router
+from bot.handlers.homework import homework_router
 
 logging.basicConfig(
     level=logging.INFO,
@@ -91,6 +92,7 @@ async def main():
     # 3. Routerlarni ro'yxatdan o'tkazish
     dp.include_router(admin_router)
     dp.include_router(start_router)
+    dp.include_router(homework_router)
     dp.include_router(student_router)
 
     # 4. Bot buyruqlarini sozlash va eskirgan yangilanishlarni tozalash

@@ -6,7 +6,11 @@ O‘zbekiston Respublikasi umumiy o‘rta ta’lim maktablarining **5-sinfidan 1
 
 ## 🌟 Asosiy imkoniyatlar
 
-1. **Sinflar bo‘yicha to‘liq qamrov (5–11-sinflar):**
+1. **Bosh menyu xizmatlari:**
+   - 📊 **BSB va CHSB javoblari:** 5-sinfdan 11-sinfgacha bo'lgan barcha fanlardan summativ baholash topshiriqlari va yechimlari.
+   - ✍️ **Uyga vazifani yechish (AI Ustoz):** Kitobdagi misol/mashq rasmini yoki matnini chatga yuborish orqali barcha fanlardan (Matematika, Fizika, Kimyo, Ona tili, Ingliz tili, Tarix va hk.) daftarga yozishga tayyor to'liq yechimni olish.
+
+2. **Sinflar bo‘yicha to‘liq qamrov (5–11-sinflar):**
    - 5-sinfdan 11-sinfgacha bo‘lgan barcha sinflar qamrab olingan.
    - Har bir sinf uchun O‘zbekiston Maktabgacha va maktab ta’limi vazirligi (MMTV) tomonidan tasdiqlangan rasmiy o‘quv dasturidagi alohida fanlar ro‘yxati shakllantirilgan (umumiy bitta ro‘yxat emas, har bir sinf uchun mustaqil fanlar).
 

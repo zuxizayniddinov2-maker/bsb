@@ -127,5 +127,24 @@ class TestBotFunctionality(unittest.IsolatedAsyncioTestCase):
         not_found = format_not_found_text("5-sinf", "2-chorak", "Matematika", "BSB", 3)
         self.assertIn("ishonchli javobi hozircha topilmadi", not_found)
 
+    async def test_homework_feature(self):
+        from bot.keyboards.homework_kb import get_main_mode_keyboard, get_homework_subjects_keyboard
+        from bot.services.homework_solver import solve_homework_task, solve_math_with_sympy
+
+        mode_kb = get_main_mode_keyboard()
+        self.assertEqual(len(mode_kb.inline_keyboard), 2)
+
+        hw_kb = get_homework_subjects_keyboard()
+        self.assertGreater(len(hw_kb.inline_keyboard), 4)
+
+        # Matematik tenglama yechimini tekshirish
+        math_sol = solve_math_with_sympy("2*x + 6 = 20")
+        self.assertIsNotNone(math_sol)
+        self.assertIn("7", math_sol)
+
+        # Umumiy topshiriq yechimini tekshirish
+        ona_tili_sol = await solve_homework_task("Ona tili", text="12-mashq. Gaplarni ko'chiring.")
+        self.assertIn("Daftarga yozish", ona_tili_sol)
+
 if __name__ == "__main__":
     unittest.main()
