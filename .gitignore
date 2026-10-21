@@ -1,0 +1,27 @@
+# Environment variables (token va maxfiy ma'lumotlar)
+.env
+
+# Python kesh fayllari
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Ma'lumotlar bazasi (foydalanuvchilar va lokal ma'lumotlar)
+data/bot.db
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+
+# Virtual muhitlar
+venv/
+.venv/
+env/
+ENV/
+
+# VS Code va muhit fayllari
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+.idea/
+*.log
