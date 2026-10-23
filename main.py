@@ -2,6 +2,7 @@ import sys
 import os
 import asyncio
 import logging
+import httpx
 from aiohttp import web
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
@@ -54,6 +55,24 @@ async def start_render_health_server():
         logger.warning(f"Render HTTP serverini ishga tushirishda xatolik: {e}")
         return None
 
+async def keep_alive_ping():
+    """Render bepul tarifida bot uxlab qolmasligi uchun tashqi URL ga muntazam so'rov yuborish."""
+    url = os.getenv("RENDER_EXTERNAL_URL") or os.getenv("PING_URL")
+    if not url:
+        return
+    health_url = url.rstrip("/") + "/health"
+    logger.info(f"Render keep-alive ping faollashtirildi: {health_url}")
+    # Dastlabki 3 daqiqa kutish, so'ngra har 10 daqiqada so'rov yuborish
+    await asyncio.sleep(180)
+    while True:
+        try:
+            async with httpx.AsyncClient(timeout=15.0) as client:
+                res = await client.get(health_url)
+                logger.info(f"Keep-alive ping muvaffaqiyatli yuborildi ({res.status_code})")
+        except Exception as e:
+            logger.debug(f"Keep-alive ping xatosi (muhim emas): {e}")
+        await asyncio.sleep(600)  # Har 10 daqiqada bir marta
+
 async def setup_bot_commands(bot: Bot):
     """Telegram menyusi uchun standart buyruqlarni o'rnatish."""
     commands = [
@@ -67,50 +86,67 @@ async def setup_bot_commands(bot: Bot):
 async def main():
     logger.info("Bot ishga tushirilmoqda...")
 
-    if not BOT_TOKEN or BOT_TOKEN == "YOUR_TELEGRAM_BOT_TOKEN_HERE":
-        logger.error(
-            "\n" + "=" * 60 + "\n"
-            "XATOLIK: BOT_TOKEN aniqlanmadi!\n"
-            "Iltimos, loyiha papkasidagi '.env' faylini oching va @BotFather orqali olingan tokeningizni kiriting:\n"
-            "BOT_TOKEN=123456789:ABCdefGHIjklMNOpqrSTUvwxYZ\n"
-            "=" * 60
-        )
-        return
-
-    # 1. Ma'lumotlar bazasini tayyorlash va o'quv dasturi bilan to'ldirish
-    logger.info("Ma'lumotlar bazasi tekshirilmoqda...")
-    await init_db()
-    await seed_database()
-
-    # 2. Aiogram Bot va Dispatcher obyektlarini yaratish
-    bot = Bot(
-        token=BOT_TOKEN,
-        default=DefaultBotProperties(parse_mode=ParseMode.HTML)
-    )
-    dp = Dispatcher(storage=MemoryStorage())
-
-    # 3. Routerlarni ro'yxatdan o'tkazish
-    dp.include_router(admin_router)
-    dp.include_router(start_router)
-    dp.include_router(homework_router)
-    dp.include_router(student_router)
-
-    # 4. Bot buyruqlarini sozlash va eskirgan yangilanishlarni tozalash
-    await setup_bot_commands(bot)
-    await bot.delete_webhook(drop_pending_updates=True)
-
-    bot_info = await bot.get_me()
-    logger.info(f"Bot muvaffaqiyatli ishga tushdi: @{bot_info.username} (ID: {bot_info.id})")
-    print(f"\n>>> Bot ishlamoqda! Telegramdan @{bot_info.username} ga /start yuboring.\n")
-
-    # 5. Render HTTP serveri va Pollingni boshlash
+    # 1. Render HTTP salomatlik serverini eng avval ishga tushirish (Port Scan xatosini oldini olish)
     health_runner = await start_render_health_server()
+    ping_task = None
+    if os.getenv("RENDER_EXTERNAL_URL") or os.getenv("PING_URL"):
+        ping_task = asyncio.create_task(keep_alive_ping())
+
+    bot = None
     try:
+        # 2. Token mavjudligini tekshirish
+        if not BOT_TOKEN or BOT_TOKEN == "YOUR_TELEGRAM_BOT_TOKEN_HERE":
+            logger.error(
+                "\n" + "=" * 70 + "\n"
+                "XATOLIK: BOT_TOKEN aniqlanmadi!\n\n"
+                "1. Render.com da bo'lsangiz:\n"
+                "   Render Dashboard -> Boshqaruv paneli -> 'Environment' bo'limiga kiring;\n"
+                "   'Add Environment Variable' tugmasini bosing;\n"
+                "   Key: BOT_TOKEN\n"
+                "   Value: @BotFather dan olingan bot tokeningiz\n\n"
+                "2. Lokal kompyuterda bo'lsangiz:\n"
+                "   Loyiha papkasidagi '.env' faylini ochib, BOT_TOKEN ni yozing.\n"
+                "=" * 70
+            )
+            # Server port scan xatosi bermasligi va foydalanuvchi loglarni ko'ra olishi uchun
+            while True:
+                await asyncio.sleep(3600)
+
+        # 3. Ma'lumotlar bazasini tayyorlash va o'quv dasturi bilan to'ldirish
+        logger.info("Ma'lumotlar bazasi tekshirilmoqda...")
+        await init_db()
+        await seed_database()
+
+        # 4. Aiogram Bot va Dispatcher obyektlarini yaratish
+        bot = Bot(
+            token=BOT_TOKEN,
+            default=DefaultBotProperties(parse_mode=ParseMode.HTML)
+        )
+        dp = Dispatcher(storage=MemoryStorage())
+
+        # 5. Routerlarni ro'yxatdan o'tkazish
+        dp.include_router(admin_router)
+        dp.include_router(start_router)
+        dp.include_router(homework_router)
+        dp.include_router(student_router)
+
+        # 6. Bot buyruqlarini sozlash va eskirgan yangilanishlarni tozalash
+        await setup_bot_commands(bot)
+        await bot.delete_webhook(drop_pending_updates=True)
+
+        bot_info = await bot.get_me()
+        logger.info(f"Bot muvaffaqiyatli ishga tushdi: @{bot_info.username} (ID: {bot_info.id})")
+        print(f"\n>>> Bot ishlamoqda! Telegramdan @{bot_info.username} ga /start yuboring.\n")
+
+        # 7. Pollingni boshlash
         await dp.start_polling(bot)
     finally:
+        if ping_task:
+            ping_task.cancel()
         if health_runner:
             await health_runner.cleanup()
-        await bot.session.close()
+        if bot:
+            await bot.session.close()
 
 if __name__ == "__main__":
     try:
